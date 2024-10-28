@@ -1,1 +1,1 @@
-# AtlasSNS9_kida
+# AtlasSNS_KIDA_ATSUKO
