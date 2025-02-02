@@ -1,10 +1,22 @@
 @charset "UTF-8";
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     height: 100%;
-    background: #186AC9;
+    background: linear-gradient(#186AC9, #fbe230);
+}
+
+section {
+    background-color: #ccd8ff;
+    padding: 50px 0;
+}
+
+div {
+    width: 200px;
+    height: 260px;
+    background-color: rgba(122, 129, 153, 0.6);
+    margin: 0 auto;
 }
