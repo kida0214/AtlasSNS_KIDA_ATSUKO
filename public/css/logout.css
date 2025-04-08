@@ -1,22 +1,163 @@
 @charset "UTF-8";
 
-html {
-    height: 100%;
-}
-
+/* 全体の高さを確保 */
+html,
 body {
-    height: 100%;
-    background: linear-gradient(#186AC9, #fbe230);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    height: auto;
+    background: linear-gradient(to bottom, #186AC9 15%, #43a0f5 57%, #fbe230 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-section {
-    background-color: #ccd8ff;
-    padding: 50px 0;
+/* ログアウトページのコンテナ */
+.logout-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
-div {
-    width: 200px;
-    height: 260px;
-    background-color: rgba(122, 129, 153, 0.6);
-    margin: 0 auto;
+/* ロゴ画像 */
+.logo-image {
+    width: 100px;
+    height: auto;
+}
+
+/* タイトルテキスト */
+.sns-text,
+.new-text {
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+
+.sns-text {
+    font-size: 30px;
+}
+
+.new-text {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+/* 説明テキスト */
+.welcome-text,
+.new-user {
+    color: #fff;
+    text-align: center;
+}
+
+.welcome-text {
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.new-user {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.login-form {
+    background-color: rgba(80, 80, 80, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    width: 20vw;
+    max-width: 400px;
+    min-width: 280px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* スマホ対応 */
+@media screen and (max-width: 768px) {
+    .login-form {
+        width: 80vw;
+        max-width: 300px;
+    }
+}
+
+/* 入力フィールドとラベル */
+.form-group {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    color: #fff;
+    font-size: 13px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-weight: normal;
+}
+
+.input {
+    width: 100%;
+    padding: 5px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* ボタン共通スタイル */
+.submit-button,
+.login-button {
+    background-color: #ed3a50;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+}
+
+.submit-button {
+    font-size: 13px;
+    padding: 5px 15px;
+    width: 100px;
+    margin-left: auto;
+}
+
+.login-button {
+    font-size: 15px;
+    padding: 10px 20px;
+    width: 150px;
+    margin: 0 auto 30px;
+    text-decoration: none;
+}
+
+.login-button:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* 新規登録リンク */
+.register-link {
+    display: block;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    margin-top: 20px;
+    text-decoration: underline;
+}
+
+/* エラーメッセージ */
+.error {
+    color: black;
+    font-size: 10px;
 }

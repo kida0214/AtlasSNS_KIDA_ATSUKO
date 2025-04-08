@@ -1,30 +1,50 @@
 <?php
-
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\FollowsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-
-
+// 認証が必要ないルート
 require __DIR__ . '/auth.php';
 
-Route::get('top', [PostsController::class, 'index']);
+// 認証が必要なルート
+Route::middleware(['auth'])->group(function () {
 
-Route::get('profile', [ProfileController::class, 'profile']);
+// トップページ
+Route::get('/top', [PostsController::class, 'index'])->name('top');
 
-Route::get('search', [UsersController::class, 'index']);
+// 投稿関連（CRUD操作）
+Route::resource('posts', PostsController::class)->except(['show']);
 
-Route::get('follow-list', [PostsController::class, 'index']);
-Route::get('follower-list', [PostsController::class, 'index']);
+// ユーザー検索
+Route::get('/search', [UsersController::class, 'search'])->name('users.search');
+
+// フォロー・フォロワー関連
+Route::get('/follow-list', [FollowsController::class, 'followList'])->name('follow.list');
+Route::get('/follower-list', [FollowsController::class, 'followerList'])->name('follower.list');
+Route::post('/follow/{id}', [FollowsController::class, 'follow'])->name('follow');
+Route::delete('/unfollow/{id}', [FollowsController::class, 'unfollow'])->name('unfollow');
+
+// フォローリストの投稿一覧
+Route::get('/follow-list/posts', [PostsController::class, 'followListPosts'])->name('follow.list.posts');
+
+// フォロワーリストの投稿一覧
+Route::get('/follower-list/posts', [PostsController::class, 'followerListPosts'])->name('follower.list.posts');
+
+// プロフィール関連
+// 自分のプロフィール表示
+Route::get('/profile', [ProfileController::class, 'showOwnProfile'])->name('profile');
+
+// プロフィール編集
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/posts/{post}', [PostsController::class, 'destroy'])->name('posts.destroy');
+
+// 他のユーザーのプロフィール
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
+
+// ログアウト
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+});

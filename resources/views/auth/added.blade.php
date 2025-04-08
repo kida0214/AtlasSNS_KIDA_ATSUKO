@@ -1,10 +1,14 @@
 <x-logout-layout>
-   <div id="clear">
-    <p>{{ session('user_name') }} さん</p> <!-- ユーザー名を表示 -->
-    <p>ようこそ！AtlasSNSへ！</p>
-    <p>ユーザー登録が完了しました。</p>
-    <p>早速ログインをしてみましょう。</p>
+   <div class="login-form">
+<p class="new-text">
+    {{ session('user_name') }}さん<br>ようこそ！AtlasSNSへ！
+</p>
+<p class="new-user">ユーザー登録が完了いたしました。<br>早速ログインをしてみましょう！</p>
 
-    <p class="btn"><a href="login">ログイン画面へ</a></p>
-  </div>
+<!-- ログイン画面へのリンクをボタン風に表示 -->
+<a href="{{ route('login') }}" class="login-button">ログイン画面へ</a>
+
+</div>
+{!! Form::close() !!}
+
 </x-logout-layout>

@@ -22,10 +22,10 @@
         <!--iphoneのアプリアイコン指定-->
         <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     </head>
-    <body>
+    <body class="logout-page">
         <header>
-            <h1><img src="images/atlas.png"></h1>
-            <p>Social Network Service</p>
+            <h1><img src="{{ asset('images/atlas.png') }}" class="logo-image"></h1>
+            <p class="sns-text">Social Network Service</p>
         </header>
         <div id="container">
             {{ $slot }}

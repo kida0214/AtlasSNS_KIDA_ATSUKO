@@ -1,9 +1,9 @@
 <x-logout-layout>
     <!-- 適切なURLを入力してください -->
 {!! Form::open(['url' => 'register']) !!}
-
-<h2>新規ユーザー登録</h2>
-
+<div class="login-form">
+    <p class="welcome-text">新規ユーザー登録</p>
+    <div class="form-group">
 {{ Form::label('ユーザー名') }}
 {{ Form::text('username',null,['class' => 'input']) }}
     @error('username')
@@ -27,11 +27,9 @@
     @error('password_confirmation')
         <div class="error">{{ $message }}</div>
     @enderror
-
-{{ Form::submit('登録') }}
-
-<p><a href="login">ログイン画面へ戻る</a></p>
-
+{{ Form::submit('新規登録', ['class' => 'submit-button']) }}
+<p><a href="login" class="register-link">ログイン画面へ戻る</a></p>
+</div>
 {!! Form::close() !!}
 
 

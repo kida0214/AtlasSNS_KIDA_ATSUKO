@@ -116,7 +116,7 @@ header {
 /* アコーディオンメニューの内容 */
 .accordion-content {
     display: none;
-    background-color: #f9f9f9;
+    background-color: #fff;
     border: 2px solid #ddd;
     /* 枠線を太くする */
     position: absolute;
@@ -155,7 +155,7 @@ header {
 }
 
 /* 丸いアイコン */
-.header-icon-img {
+.icon-img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -180,11 +180,6 @@ header {
     margin-bottom: 10px;
 }
 
-.list-header nav ul li {
-    list-style: none;
-    /* リストの・を消す */
-}
-
 .list-header nav ul li a {
     display: block;
     width: 120px;
@@ -193,16 +188,15 @@ header {
     background-color: #186AC9;
     color: white;
     font-size: 11px;
+    margin-right: 20px;
     text-align: center;
     border-radius: 5px;
     text-decoration: none;
 }
 
-/* ======== ユーザー検索ボタン ======== */
-.btn {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+.logout-form {
+    margin: 0;
+    padding: 0;
 }
 
 /* ======== メインコンテンツ ======== */
@@ -211,24 +205,28 @@ header {
     justify-content: space-between;
     flex-wrap: nowrap;
     /* 要素が折り返されないように設定 */
+    background-color: #fff;
 }
 
 #container {
     flex: 1 1 70%;
     /* メインコンテンツの幅を70%に設定 */
+    height: 100%;
 }
 
 #side-bar {
-    flex: 0 0 28%;
-    background-color: #f4f4f4;
-    min-width: 220px;
+    flex: 0 0 20%;
+    background-color: #fff;
+    min-width: 100px;
     /* サイドバーの最小幅を設定 */
-    border-left: 1px solid #727272;
+    min-height: 100vh;
+    /* 画面の高さに合わせて最小でも100vh */
+    border-left: 2px solid #989898;
 }
 
 #side-bar .list-header,
 #side-bar .btn {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 /* ======== レスポンシブ対応 ======== */
@@ -237,6 +235,7 @@ header {
         flex-direction: column;
         align-items: center;
         /* アイテムを中央揃え */
+        background-color: #fff;
     }
 
     #container {
@@ -252,49 +251,98 @@ header {
     }
 }
 
+.follow-info {
+    margin: 10px;
+}
+
 /* フォローアイコン */
-.follow-icons-grid {
+.follow-list {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    /* 横並びにする */
+    align-items: center;
+    /* 垂直方向に中央揃え */
     justify-content: flex-start;
+    /* アイコンとタイトルを左揃えにする */
+    gap: 20px;
+    /* タイトルとアイコンの間に隙間を空ける */
+    flex-wrap: wrap;
+    /* 画面が狭くなったときに折り返す */
+    background-color: #ffffff;
+    /* 背景を白にする */
+    padding: 20px;
+    /* 内側に余白を追加 */
+    border-radius: 8px;
+    /* 角を丸くする (オプション) */
+    border-bottom: 10px solid #f5f8fa;
 }
 
-.follow-icons-grid .user-card {
-    width: 50px;
-    height: 50px;
+/* 親要素 */
+.follow-list {
+    display: flex;
+    /* タイトルとアイコンを横並びに */
+    align-items: flex-start;
+    /* 垂直方向に上揃え */
+    justify-content: flex-start;
+    /* 左揃え */
+    flex-wrap: wrap;
+    /* アイコンが折り返すように */
 }
 
-.follow-icons-grid img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
+/* タイトルのスタイル */
+.title {
+    font-size: 20px;
+    margin-right: 20px;
+    /* タイトルとアイコンの間のスペース */
 }
 
-/* フォロワーリスト用 */
-.follower-icons-container {
-    max-width: 500px;
+/* アイコンを包むグリッド */
+.follow-icons-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    /* 1行に10個のアイコンを表示 */
+    gap: 5px;
+    /* アイコン間の隙間 */
+    max-width: 100%;
+    /* グリッドの幅を親要素に合わせる */
+    margin-top: 10px;
+    /* 必要に応じて上部の余白 */
 }
 
-/* ======== モーダル設定 ======== */
 /* 投稿フォーム */
+.error-messages {
+    background-color: #f8d7da;
+    /* 薄い赤色の背景 */
+    color: #721c24;
+    /* エラーメッセージの文字色（暗い赤） */
+    padding-left: 20px;
+    font-size: 14px;
+}
 
-.user-info {
-    margin-bottom: 10px;
+.post-form-container {
+    display: flex;
+    align-items: center;
+    /* アイコン・フォーム・ボタンを中央揃え */
+    gap: 10px;
+    /* アイコン・フォーム・ボタン間の余白 */
+    padding-left: 30px;
+    background-color: #fff;
+    border-bottom: solid 3px #f5f8fa;
+    width: 100%;
+    height: 150px;
 }
 
 /* 投稿一覧 */
 .post {
     background: #fff;
     padding: 15px;
-    margin-bottom: 10px;
+    border-top: solid 3px #f5f8fa;
 }
 
 .post-header {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: 50px;
 }
 
 .post-date {
@@ -321,39 +369,8 @@ header {
 .edit-btn img {
     width: 100%;
     /* 画像をボタンサイズに合わせる */
-    height: auto;
-    /* アスペクト比を維持 */
 }
 
-#editPostContent {
-    width: 100%;
-    /* 横幅をいっぱいに */
-    height: 150px;
-    /* 固定の高さ */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: none;
-    /* サイズ変更禁止 */
-}
-
-.update-button {
-    display: block;
-    /* ブロック要素にすることで中央寄せしやすくする */
-    margin: 10px auto 0;
-    /* 上に余白、左右中央 */
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.update-button img {
-    width: 40px;
-    /* 更新ボタン画像のサイズ調整 */
-    height: 40px;
-}
-
-/* 削除ボタン */
 /* 削除ボタンのスタイル */
 .delete-icon {
     width: 30px;
@@ -375,42 +392,181 @@ header {
     transform: scale(1.1);
 }
 
-/* モーダル */
-.modal {
+
+
+
+/* モーダルの基本スタイル */
+.modal-edit {
     display: none;
+    /* 初期状態で非表示 */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 背景に半透明の黒を表示 */
     justify-content: center;
+    /* 中央寄せ */
     align-items: center;
+    /* 中央寄せ */
+    z-index: 9999;
+    /* モーダルが最前面に表示されるように */
 }
 
-.modal-content {
-    background: white;
+/* モーダルボックスのスタイル */
+.modal-box {
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    width: 50%;
+    width: 600px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    /* 子要素を縦に並べる */
+    gap: 15px;
+    /* 子要素間の余白 */
 }
 
-.close-modal {
-    float: right;
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* テキストエリア */
+.edit-textarea {
+    width: 100%;
+    /* モーダル内の幅に収める */
+    height: 150px;
+    /* 高さ */
+    padding: 10px;
+    border: 2px solid #ccc;
+    resize: none;
+    /* ユーザーがサイズ変更できないようにする */
+    box-sizing: border-box;
+    /* padding込みでサイズを調整 */
+}
+
+/* 更新ボタンの配置 */
+.modal-button {
+    display: flex;
+    justify-content: center;
+}
+
+.update-button {
+    background-color: transparent;
+    border: none;
     cursor: pointer;
 }
 
+.update-button img {
+    width: 40px;
+    height: 40px;
+}
+
+/* 削除機能モーダル */
+.modal-delete {
+    display: none;
+    /* 初期状態で非表示 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    /* 中央寄せ */
+    align-items: center;
+    /* 中央寄せ */
+    z-index: 9999;
+    /* モーダルが最前面に表示されるように */
+}
+
+/* 削除モーダルコンテンツ */
+.modal-content {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 100px;
+    z-index: 9999;
+    /* モーダルを最前面に持ってくる記述 */
+    border-radius: 0;
+    /* 角の丸みをなくす */
+}
+
+/* テキスト部分（左寄せ） */
+.modal-text {
+    text-align: left;
+    margin: 10px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    /* 右寄せ */
+    gap: 10px;
+    /* ボタンの間隔を開ける */
+    margin: 20px;
+    /* テキストとの間隔 */
+}
+
+/* OKボタン */
+#confirmDelete {
+    background-color: #186AC9;
+    /* 明るい青色 */
+    color: white;
+    /* 文字色 */
+    border-radius: 8px;
+    /* 角を丸める */
+    padding: 5px;
+    /* ボタンのサイズ */
+    border: none;
+    /* 縁をなくす */
+    width: 100px;
+    /* 幅を指定 */
+    display: inline-block;
+    /* 幅を合わせるため */
+    text-align: center;
+    /* テキストを中央揃え */
+    cursor: pointer;
+    /* カーソルをポインタに */
+}
+
+/* キャンセルボタン */
+#cancelDelete {
+    background-color: #fff;
+    /* 白色背景 */
+    color: black;
+    /* 文字色 */
+    border: 1px solid black;
+    /* 黒い縁取り */
+    border-radius: 8px;
+    /* 角を丸める */
+    padding: 5px;
+    /* ボタンのサイズ */
+    width: 100px;
+    /* 幅を指定 */
+    display: inline-block;
+    /* 幅を合わせるため */
+    text-align: center;
+    /* テキストを中央揃え */
+    cursor: pointer;
+    /* カーソルをポインタに */
+}
+
 .username {
-    font-weight: bold;
     margin-right: auto;
     /* 右側に余白を確保 */
 }
 
 .post-content {
     margin-top: 5px;
-    padding-left: 60px;
+    padding-left: 110px;
     /* アイコンのスペースを考慮 */
     word-break: break-word;
+    width: 85%;
 }
 
 .post-actions {
@@ -420,18 +576,6 @@ header {
     margin-top: 10px;
 }
 
-.post-form-container {
-    display: flex;
-    align-items: center;
-    /* アイコン・フォーム・ボタンを中央揃え */
-    gap: 10px;
-    /* アイコン・フォーム・ボタン間の余白 */
-    padding: 40px;
-    margin-bottom: 10px;
-    background-color: #fff;
-    width: 100%;
-}
-
 .user-info {
     flex-shrink: 0;
     /* アイコンのサイズを固定 */
@@ -439,17 +583,12 @@ header {
 
 form {
     display: flex;
-    align-items: center;
-    flex-grow: 1;
-    /* 投稿フォームを伸ばす */
-    position: relative;
 }
 
 .form-control {
-    flex-grow: 1;
-    height: 40px;
-    width: 60%;
-    /* コンテナに対して70%の幅 */
+    width: 650px;
+    height: 100px !important;
+    /* 高さを指定し、優先順位を強制的に上げる */
     resize: none;
     padding: 10px;
     background-color: #fff;
@@ -476,18 +615,12 @@ form {
     transform: none !important;
 }
 
-.post-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-left: 10px;
-    /* フォームとボタンの間隔 */
-    flex-shrink: 0;
-}
-
-.post-button img {
-    width: 40px;
-    height: 40px;
+.btn {
+    display: flex;
+    justify-content: center;
+    /* 横中央 */
+    align-items: center;
+    /* 縦中央 */
 }
 
 .btn a {
@@ -499,10 +632,6 @@ form {
     font-size: 13px;
     text-align: center;
     border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    /* transformのアニメーションを削除 */
-    box-shadow: none;
     outline: none;
 }
 
@@ -511,34 +640,267 @@ form {
     transform: none !important;
 }
 
+.search-container {
+    display: flex;
+    justify-content: center;
+    /* 全体を中央揃えにする */
+    align-items: center;
+    /* 垂直方向にも中央揃え */
+    padding: 30px;
+    background-color: #fff;
+    border-bottom: 5px solid #f5f8fa;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* フォームと検索ワードの間に隙間を空ける */
+    justify-content: flex-start;
+    /* 左寄せ */
+    width: 100%;
+}
+
+.search-word {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    /* テキストを中央揃え */
+    width: 100%;
+    /* 幅を100%にして中央に配置 */
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* フォーム内の要素を左寄せ */
+    gap: 10px;
+    /* フォームとボタンの間に隙間を空ける */
+    flex-grow: 1;
+    /* フォームが可能な限り広がる */
+}
+
+.no-results-message {
+    font-size: 13px;
+    /* 文字サイズを調整 */
+    color: #555;
+    /* 色を調整 */
+    text-align: center;
+    /* メッセージを中央に配置 */
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.post-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    /* フォームとボタンの間隔 */
+    flex-shrink: 0;
+}
+
+.post-button img {
+    width: 30px;
+}
+
 /* フォローボタン（未フォロー状態） */
+.follow-btn {
+    display: block;
+    /* 🔹 ブロック要素にする */
+}
+
 .follow-btn.follow {
     background-color: #1da1f2;
     /* Twitter風の青 */
     color: white;
     border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.follow-btn.follow:hover {
-    background-color: #0d8ae3;
-    /* 濃い青 */
+    padding: 4px 18px;
+    border-radius: 5px;
+    font-size: 13px;
+    min-width: 120px;
+    /* ← 横幅を広げる */
+    text-align: center;
 }
 
 /* フォロー解除ボタン（フォロー済み） */
 .follow-btn.unfollow {
-    background-color: #ff4d4d;
+    background-color: #ed3833;
     /* 赤系 */
     color: white;
     border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 4px 18px;
+    border-radius: 5px;
+    font-size: 13px;
+    min-width: 120px;
+    /* ← 横幅を広げる */
+    text-align: center;
+}
+
+/* ======== ユーザー検索ボタン ======== */
+
+.user-search-btn {
+    text-align: center;
+    padding: 20px;
+    border-top: 5px solid #f5f8fa;
+    /* 上の余白部分に色をつける */
+}
+
+.user-search-btn a {
+    display: inline-block;
+    /* リンクをブロック要素にして、スタイル調整しやすく */
+    padding: 5px 20px;
+    /* ボタン内の余白 */
+    background-color: #186AC9;
+    /* 背景色 */
+    color: white;
+    /* 文字色 */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 13px;
+    /* テキストのサイズを変更 */
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 🔹 横方向の中央揃え */
+    gap: 10px;
+    padding: 10px;
+    background-color: #fff;
+    width: 100%;
+    /* 🔹 親要素いっぱいに広げる */
+    text-align: center;
+    /* 🔹 内包要素を中央揃え */
+}
+
+/* ユーザーリストのコンテナ全体の余白も調整 */
+.user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    /* 🔹 ユーザー同士の間隔をなくす */
+    padding: 0;
+    margin: 0;
+}
+
+.user p {
+    font-size: 16px;
+    color: #333;
+    width: 150px;
+    margin: 10px;
+    text-align: left;
+    /* 左揃え */
+}
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 🔹 子要素（.user）を中央揃え */
+    justify-content: center;
+    /* 🔹 必要なら縦方向の中央揃えも */
+    padding: 20px;
+    background-color: #fff;
+}
+
+
+/* 自己紹介関連 */
+.profile-list {
+    background-color: #fff;
+    max-width: 100%;
+    padding: 30px;
+    border-bottom: 5px solid #f5f8fa;
+}
+
+.profile-content {
+    display: flex;
+    position: relative;
+    /* ボタンを右下に置くために必要 */
+}
+
+/* 左: アイコン / 右: テキスト情報 */
+.profile-main {
+    display: flex;
+    gap: 20px;
+}
+
+/* テキスト部分のレイアウト */
+.profile-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-row {
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+    align-items: flex-start;
+}
+
+.profile-label {
+    width: 100px;
+    font-family: monospace;
+    color: #666;
+    display: inline-block;
+}
+
+.profile-value {
+    width: calc(100% - 110px);
+    /* ラベルの幅分を引く */
+    word-wrap: break-word;
+    /* 長い単語を折り返して表示 */
+    overflow: hidden;
+    /* はみ出たテキストを隠す */
+    text-overflow: ellipsis;
+    /* 文字数が多い場合は省略記号を表示 */
+    font-family: monospace;
+    box-sizing: border-box;
+    /* パディングとボーダーを幅に含める */
+    max-width: 100%;
+    /* 幅を100%に設定 */
+}
+
+.profile-value.bio {
+    display: inline-block;
+    /* ブロックとして扱いつつ、コンテンツサイズに合わせる */
+    max-width: 60%;
+    /* コンテナ幅に合わせる */
+    white-space: pre-wrap;
+    /* 改行とスペースを保持 */
+    word-break: break-word;
+    /* 長い単語での折り返し（こちらが効く場合も） */
+    overflow-wrap: break-word;
+    /* 古いブラウザ向け補完 */
+    line-height: 1.6;
+    /* 行間をとって読みやすく */
+    box-sizing: border-box;
+    /* padding 込みで幅制御 */
+}
+
+/* より詳細なセレクタを使って強制的に上書き */
+.bio {
     font-size: 14px;
-    cursor: pointer;
+    height: 100%;
+}
+
+/* CSS側に記述（例） */
+.bio-input {
+    resize: none;
+    overflow: auto;
+    font-size: 14px;
+    height: 40px;
+}
+
+/* フォローボタン右下に固定 */
+.follow-action {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 /* プロフィール編集 */
@@ -547,14 +909,15 @@ form {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin: 0 auto;
-    padding: 40px;
-    background-color: rgba(255, 255, 255, 0.9);
+    height: 100%;
+    padding: 60px;
+    background-color: #fff;
 }
 
 .profile-header form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
 }
 
@@ -569,7 +932,6 @@ form {
     flex-direction: column;
     align-items: center;
     margin-right: 40px;
-    /* アイコンと入力フィールドの間隔 */
 }
 
 .profile-header .form-right {
@@ -583,44 +945,64 @@ form {
     align-items: center;
     margin-bottom: 15px;
     width: 100%;
-    /* 幅を100%にしてフォーム全体の幅に合わせる */
 }
 
 .profile-header .form-row label {
     font-weight: bold;
     margin-right: 10px;
     width: 30%;
-    /* ラベルの幅を統一 */
     text-align: left;
-    /* ラベルを左寄せ */
 }
 
 .profile-header .form-row input,
 .profile-header .form-row textarea {
-    width: 70%;
-    /* 入力フィールドの幅を統一 */
+    width: 90%;
     padding: 8px;
     border: 1px solid #ccc;
     font-size: 14px;
-    border-radius: 4px;
+    background-color: #f5f8fa;
 }
 
-.profile-header .form-row textarea {
-    height: 40px;
-    /* 高さを調整 */
-    resize: none;
-    /* ユーザーがサイズを変更できないように */
-}
-
-.profile-header button {
-    width: 20%;
+.profile-header button.update-btn {
+    width: 130px;
+    /* ボタンの幅を自動にする */
+    height: 30px;
     background-color: #ed3a50;
     color: white;
-    padding: 5px;
     border: none;
     border-radius: 5px;
     font-size: 13px;
-    cursor: pointer;
-    margin-top: 20px;
-    /* ボタンに上部マージンを追加 */
+    text-align: center;
+    /* ボタン内のテキストを中央揃え */
+}
+
+.profile-header form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* フォーム全体を縦に中央配置 */
+}
+
+.profile-header .form-rows input,
+.profile-header .form-rows textarea {
+    width: 90%;
+    height: 60px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: #f5f8fa;
+}
+
+.profile-header .form-rows {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.profile-header .form-rows label {
+    font-weight: bold;
+    margin-right: 10px;
+    width: 30%;
+    text-align: left;
 }
