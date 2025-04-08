@@ -120,7 +120,7 @@ header {
     border: 2px solid #ddd;
     /* 枠線を太くする */
     position: absolute;
-    top: 15%;
+    margin-top: 1.2%;
     width: 255px;
     right: 0;
     left: auto;

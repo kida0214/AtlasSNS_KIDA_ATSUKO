@@ -158,6 +158,6 @@ body {
 
 /* エラーメッセージ */
 .error {
-    color: black;
+    color: red;
     font-size: 10px;
 }
