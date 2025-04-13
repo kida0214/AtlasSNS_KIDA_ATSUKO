@@ -40,7 +40,6 @@ Route::get('/profile', [ProfileController::class, 'showOwnProfile'])->name('prof
 // プロフィール編集
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
-Route::delete('/posts/{post}', [PostsController::class, 'destroy'])->name('posts.destroy');
 
 // 他のユーザーのプロフィール
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');

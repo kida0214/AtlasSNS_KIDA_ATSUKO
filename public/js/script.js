@@ -5,14 +5,13 @@ $(function () {
     $(this).toggleClass("open");
   });
 
-
   // 削除モーダル用
   let deleteForm;
 
   $(".delete-icon").on("click", function (e) {
     e.preventDefault();
     // 削除対象の投稿IDを取得
-    const postId = $(this).data("id"); // data-id属性に投稿IDを格納
+    const postId = $(this).data("id");
 
     // 削除フォームのactionを設定
     deleteForm = $("#deleteForm");
@@ -33,7 +32,6 @@ $(function () {
     $("#deleteModal").fadeOut();
   });
 
-
   // 編集モーダル用
   $(".edit-btn").on("click", function (e) {
     e.preventDefault();
@@ -44,4 +42,11 @@ $(function () {
     $("#editPostForm").attr("action", `/posts/${postId}`);
     $("#editModal").css("display", "flex");
   });
+
+  // ファイル選択表示のラベル切り替え
+  $('#icon_image').on('change', function () {
+    const fileName = this.files.length > 0 ? this.files[0].name : 'ファイルを選択';
+    $('#custom-label').text(fileName);
+  });
+
 });

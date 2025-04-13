@@ -850,8 +850,6 @@ form {
 }
 
 .profile-value {
-    width: calc(100% - 110px);
-    /* ラベルの幅分を引く */
     word-wrap: break-word;
     /* 長い単語を折り返して表示 */
     overflow: hidden;
@@ -891,7 +889,8 @@ form {
 /* CSS側に記述（例） */
 .bio-input {
     resize: none;
-    overflow: auto;
+    overflow: hidden;
+    /* ← ここを変更 */
     font-size: 14px;
     height: 40px;
 }
@@ -986,11 +985,8 @@ form {
 .profile-header .form-rows input,
 .profile-header .form-rows textarea {
     width: 90%;
-    height: 60px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    background-color: #f5f8fa;
+    height: 40px;
+    background-color: #fff;
 }
 
 .profile-header .form-rows {
@@ -1005,4 +1001,73 @@ form {
     margin-right: 10px;
     width: 30%;
     text-align: left;
+}
+
+.error-messages {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.875rem;
+}
+
+
+/* 選択されたファイル名が表示されないようにする */
+.file-input::-webkit-file-upload-button {
+    visibility: hidden;
+    /* ChromeやSafariでのファイル名表示を非表示にする */
+}
+
+/* ファイル選択後、ファイル名が表示されないようにラベルに表示する */
+.file-input:focus+.file-label,
+.file-input:valid+.file-label {
+    background-color: #e0e0e0;
+    /* ファイルが選択された後、ラベル背景色変更 */
+}
+
+/* 選択したファイル名を表示しないため、ファイル名が入らないように */
+.file-input::file-selector-button {
+    visibility: hidden;
+    /* ここで表示されるファイル名部分を隠す */
+}
+
+/* 完全に input を透明にして押せるけど見えないようにする */
+.file-upload input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* ラベルをボタン風に見せる */
+#custom-label {
+    display: inline-block;
+    width: 140px;
+    padding: 10px 10px;
+    background-color: #fff;
+    color: #636b6f;
+    font-size: 13px;
+    font-weight: normal;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+/* ラベルとinputをまとめて配置 */
+.file-upload {
+    width: 90%;
+    height: 80px;
+    border: 1px solid #ccc;
+    background-color: #f5f8fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    position: relative;
 }

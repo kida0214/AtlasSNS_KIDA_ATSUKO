@@ -25,33 +25,20 @@
     </div>
 
     <!-- 投稿一覧 -->
-    @foreach($posts as $post)
-        <div class="post">
-            <div class="post-header">
-                <!-- 投稿者のアイコン -->
-                <img src="{{ asset($post->user->icon_image) }}" alt="icon" class="icon-img">
-                <!-- ユーザー名 -->
-                <p class="username">{{ $post->user->username }}</p>
-                <!-- 投稿日 -->
-                <p class="post-date">{{ $post->created_at->format('Y-m-d H:i') }}</p>
-            </div>
-            <!-- 投稿内容 -->
-            <p class="post-content">{!! nl2br(e($post->post)) !!}</p>
-
-            @if(Auth::id() === $post->user_id)
-                <div class="post-actions">
-                    <!-- 編集ボタン -->
-                    <button type="button" class="edit-btn" data-id="{{ $post->id }}" data-content="{{ $post->post }}">
-                        <img src="{{ asset('images/edit.png') }}" alt="編集">
-                    </button>
-
-                    <!-- 削除ボタン -->
-                    <button type="button" class="delete-icon" data-id="{{ $post->id }}"></button>
-                </div>
-            @endif
+     @if($posts ->isEmpty())
+     <p>投稿はありません！！</p>
+     @else
+@foreach($posts as $post)
+    <div class="post">
+        <div class="post-header">
+            <img src="{{ asset($post->user->icon_image) }}" alt="icon" class="icon-img">
+            <p class="username">{{ $post->user->username }}</p>
+            <p class="post-date">{{ $post->created_at->format('Y-m-d H:i') }}</p>
         </div>
-    @endforeach
-
+        <p class="post-content">{{ $post->post }}</p>
+    </div>
+@endforeach
+@endif
     <!-- 編集モーダル -->
     <div id="editModal" class="modal-edit">
         <div class="modal-box">
