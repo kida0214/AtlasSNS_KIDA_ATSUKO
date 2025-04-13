@@ -22,8 +22,16 @@ class Post extends Model
     /**
      * 投稿者とのリレーション（1対多）
      */
-    public function user()
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
+
+    public function followingtweet(Int $userId,Array $followingUsers_ids)
     {
-        return $this->belongsTo(User::class);
+     $followingUsers_ids [] = $userId;
+     return $this->whereIn('user_id',$followingUsers_ids)
+    ->latest()->paginate();
     }
 }

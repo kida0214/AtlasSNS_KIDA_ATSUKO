@@ -4,6 +4,15 @@
             @csrf
             @method('PUT')
 
+            <!-- バリデーションエラーの表示 -->
+            @if ($errors->any())
+                <div class="error-messages">
+                    @foreach ($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                </div>
+            @endif
+
             <div class="form-group">
                 <div class="form-left">
                     <img src="{{ asset(Auth::user()->icon_image) }}" alt="icon" class="icon-img">
@@ -30,8 +39,12 @@
                         <textarea name="bio" class="bio-input">{{ old('bio', $user->bio) }}</textarea>
                     </div>
                     <div class="form-rows">
-                        <label for="icon_image">アイコン画像</label>
-                        <input type="file" name="icon_image" class="file-input">
+                        <label for="icon_image" class="file-label">アイコン画像</label>
+                        <div class="file-upload">
+  <label for="icon_image" id="custom-label">ファイルを選択</label>
+  <input type="file" id="icon_image" name="icon_image" accept="image/*">
+</div>
+
                     </div>
                 </div>
             </div>

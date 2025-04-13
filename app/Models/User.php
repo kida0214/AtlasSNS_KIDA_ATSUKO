@@ -28,17 +28,19 @@ class User extends Authenticatable
         return $this->following()->where('followed_id', $userId)->exists();
     }
 
-    // 自分がフォローしているユーザーを取得
-    public function following()
-    {
-        return $this->belongsToMany(User::class, 'follows', 'following_id', 'followed_id');
-    }
+// 自分がフォローしているユーザー一覧（＝相手）
+public function following()
+{
+    return $this->belongsToMany(User::class, 'follows', 'following_id', 'followed_id');
+}
 
-    // 自分をフォローしているユーザーを取得
-    public function followers()
-    {
-        return $this->belongsToMany(User::class, 'follows', 'followed_id', 'following_id');
-    }
+// 自分をフォローしているユーザー一覧（＝フォロワー）
+public function followers()
+{
+    return $this->belongsToMany(User::class, 'follows', 'followed_id', 'following_id');
+}
+
+
 
     // フォローしているユーザー数をカウント
     public function followingCount()
