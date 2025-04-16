@@ -35,15 +35,16 @@
 
                     {{-- パスワード --}}
                     <div class="form-row">
-                        <label for="password">新しいパスワード</label>
-                        <input type="password" name="password" id="password" placeholder="新しいパスワード" autocomplete="new-password">
+                        <label for="password">パスワード</label>
+                        <input type="password" name="password" id="password" autocomplete="new-password">
                     </div>
 
-                    {{-- パスワード確認 --}}
+                    {{-- 確認用パスワード --}}
                     <div class="form-row">
                         <label for="password_confirmation">パスワード確認</label>
-                        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="確認用パスワード" autocomplete="new-password">
+                        <input type="password" name="password_confirmation" id="password_confirmation" autocomplete="new-password">
                     </div>
+
 
                     {{-- 自己紹介 --}}
                     <div class="form-row">
